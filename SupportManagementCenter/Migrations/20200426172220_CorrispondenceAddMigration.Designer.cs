@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SupportManagementCenter.Models;
 
 namespace SupportManagementCenter.Migrations
 {
     [DbContext(typeof(SupportManagementCenterDBContext))]
-    partial class SupportManagementCenterDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200426172220_CorrispondenceAddMigration")]
+    partial class CorrispondenceAddMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,40 +110,6 @@ namespace SupportManagementCenter.Migrations
                     b.ToTable("supportTickets");
                 });
 
-            modelBuilder.Entity("SupportManagementCenter.Models.TicketCorrespondenceModel", b =>
-                {
-                    b.Property<long>("CorrispondenceId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("CustomerId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("EmployeeId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("SupportTicketModelTicketId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("TicketId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CorrispondenceId");
-
-                    b.HasIndex("SupportTicketModelTicketId");
-
-                    b.ToTable("TicketCorrespondenceModel");
-                });
-
             modelBuilder.Entity("SupportManagementCenter.Models.EmployeesModel", b =>
                 {
                     b.HasOne("SupportManagementCenter.Models.SupportTicketModel", null)
@@ -153,13 +121,6 @@ namespace SupportManagementCenter.Migrations
                 {
                     b.HasOne("SupportManagementCenter.Models.SupportTicketModel", null)
                         .WithMany("ProductsId")
-                        .HasForeignKey("SupportTicketModelTicketId");
-                });
-
-            modelBuilder.Entity("SupportManagementCenter.Models.TicketCorrespondenceModel", b =>
-                {
-                    b.HasOne("SupportManagementCenter.Models.SupportTicketModel", null)
-                        .WithMany("TicketCorrispondense")
                         .HasForeignKey("SupportTicketModelTicketId");
                 });
 #pragma warning restore 612, 618

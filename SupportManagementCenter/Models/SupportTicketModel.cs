@@ -24,7 +24,7 @@ namespace SupportManagementCenter.Models
         public long CustomerId { get; set; }
         public string CustomerEmail { get; set; }
 
-        private DbSet<TicketCorrespondenceModel> TicketCorrispondense;
+        public DbSet<TicketCorrespondenceModel> TicketCorrispondense { get; set; }
 
         public DbSet<EmployeesModel> AssignedEmployee { get; set; }
         public DbSet<ProductsModel> ProductsId { get; set; }
