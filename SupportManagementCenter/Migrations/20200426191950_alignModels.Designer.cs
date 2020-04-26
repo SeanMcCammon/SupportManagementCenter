@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SupportManagementCenter.Models;
 
 namespace SupportManagementCenter.Migrations
 {
     [DbContext(typeof(SupportManagementCenterDBContext))]
-    partial class SupportManagementCenterDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200426191950_alignModels")]
+    partial class alignModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

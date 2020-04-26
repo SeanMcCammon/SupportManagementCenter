@@ -14,19 +14,15 @@ namespace SupportManagementCenter.Models
 
         public long ProductId { get; set; }
 
-        //public long AssignedEmployee { get; set; }
+        public long AssignedEmployeeId { get; set; }
         public string TicketTitle { get; set; }
         public string TicketDetails { get; set; }
         public DateTime DateRaised { get; set; }
         public DateTime DateClosed { get; set; }
-        //public long Corrispondance { get; set; }
         public string CustomerName { get; set; }
         public long CustomerId { get; set; }
         public string CustomerEmail { get; set; }
 
         public DbSet<TicketCorrespondenceModel> TicketCorrispondense { get; set; }
-
-        public DbSet<EmployeesModel> AssignedEmployee { get; set; }
-        public DbSet<ProductsModel> ProductsId { get; set; }
     }
 }
