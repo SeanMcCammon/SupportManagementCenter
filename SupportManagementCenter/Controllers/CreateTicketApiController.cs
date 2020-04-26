@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using SupportManagementCenter.Models;
 
 namespace SupportManagementCenter.Controllers
@@ -35,7 +36,7 @@ namespace SupportManagementCenter.Controllers
 
         // POST: api/CreateTicketApi
         [HttpPost]
-        public void Post([FromBody] SupportTicketModel supportTicketModel)
+        public async Task<IActionResult> Post([FromBody] SupportTicketModel supportTicketModel)
         {
             if (ModelState.IsValid)
             {
@@ -46,7 +47,9 @@ namespace SupportManagementCenter.Controllers
                 await _context.SaveChangesAsync();
                 //return RedirectToAction(nameof(Index));
             }
+
             //return View(supportTicketModel);
+            return Ok(supportTicketModel.TicketId);
         }
 
         // PUT: api/CreateTicketApi/5
