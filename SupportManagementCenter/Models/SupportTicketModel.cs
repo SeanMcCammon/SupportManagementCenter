@@ -11,8 +11,16 @@ namespace SupportManagementCenter.Models
         [Key]
         public long TicketId { get; set; }
 
+        public long ProductId { get; set; }
+
         public long AssignedEmployee { get; set; }
         public string TicketTitle { get; set; }
         public string TicketDetails { get; set; }
+        public DateTime DateRaised { get; set; }
+        public DateTime DateClosed { get; set; }
+        public long CorrispondanceId { get; set; }
+        public string CustomerName { get; set; }
+        public long CustomerId { get; set; }
+        public string CustomerEmail { get; set; }
     }
 }

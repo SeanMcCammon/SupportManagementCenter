@@ -10,7 +10,8 @@ namespace SupportManagementCenter.Models
     {
         [Key]
         public long ProductId { get; set; }
-        public string Product { get; set; }
+        public string ProductName { get; set; }
+        public string ProduceDescription { get; set; }
 
         public string Notes { get; set; }
     }
