@@ -15,6 +15,6 @@ namespace SupportManagementCenter.Models
 
         public DbSet<SupportTicketModel> supportTickets { get; set; }
         public DbSet<EmployeesModel> AssignedEmployee { get; set; }
-        public DbSet<ProductsModel> ProductsId { get; set; }
+        public DbSet<ProductsModel> Products { get; set; }
     }
 }
