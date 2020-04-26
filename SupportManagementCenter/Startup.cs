@@ -56,7 +56,7 @@ namespace SupportManagementCenter
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=SupportTicket}/{action=Index}/{id?}");
             });
         }
     }
