@@ -19,5 +19,6 @@ namespace SupportManagementCenter.Models
         public DbSet<ProductsModel> Products { get; set; }
         public DbSet<TicketCorrespondenceModel> TicketCorrespondence { get; set; }
         public DbSet<TicketHistory> TicketHistories { get; set; }
+        public DbSet<TicketStatus> TicketStatus { get; set; }
     }
 }
