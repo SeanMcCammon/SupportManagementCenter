@@ -28,5 +28,6 @@ namespace SupportManagementCenter.Models
 
         public DbSet<TicketCorrespondenceModel> TicketCorrispondense { get; set; }
         public DbSet<TicketHistory> TicketHistoryHistories { get; set; }
+        public long TicketStatus { get; set; }
     }
 }
