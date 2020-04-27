@@ -27,5 +27,6 @@ namespace SupportManagementCenter.Models
         public string CustomerEmail { get; set; }
 
         public DbSet<TicketCorrespondenceModel> TicketCorrispondense { get; set; }
+        public DbSet<TicketStatus> TicketStatuses { get; set; }
     }
 }

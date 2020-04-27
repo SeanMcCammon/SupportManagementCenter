@@ -24,14 +24,14 @@ namespace SupportManagementCenter.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TicketCorrespondenceModel>>> GetTicketCorrespondenceModel()
         {
-            return await _context.TicketCorrespondenceModel.ToListAsync();
+            return await _context.TicketCorrespondence.ToListAsync();
         }
 
         // GET: api/TicketCorrespondenceModels/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TicketCorrespondenceModel>> GetTicketCorrespondenceModel(long id)
         {
-            var ticketCorrespondenceModel = await _context.TicketCorrespondenceModel.FindAsync(id);
+            var ticketCorrespondenceModel = await _context.TicketCorrespondence.FindAsync(id);
 
             if (ticketCorrespondenceModel == null)
             {
@@ -79,7 +79,7 @@ namespace SupportManagementCenter.Controllers
         [HttpPost]
         public async Task<ActionResult<TicketCorrespondenceModel>> PostTicketCorrespondenceModel(TicketCorrespondenceModel ticketCorrespondenceModel)
         {
-            _context.TicketCorrespondenceModel.Add(ticketCorrespondenceModel);
+            _context.TicketCorrespondence.Add(ticketCorrespondenceModel);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetTicketCorrespondenceModel", new { id = ticketCorrespondenceModel.CorrispondenceId }, ticketCorrespondenceModel);
@@ -89,13 +89,13 @@ namespace SupportManagementCenter.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<TicketCorrespondenceModel>> DeleteTicketCorrespondenceModel(long id)
         {
-            var ticketCorrespondenceModel = await _context.TicketCorrespondenceModel.FindAsync(id);
+            var ticketCorrespondenceModel = await _context.TicketCorrespondence.FindAsync(id);
             if (ticketCorrespondenceModel == null)
             {
                 return NotFound();
             }
 
-            _context.TicketCorrespondenceModel.Remove(ticketCorrespondenceModel);
+            _context.TicketCorrespondence.Remove(ticketCorrespondenceModel);
             await _context.SaveChangesAsync();
 
             return ticketCorrespondenceModel;
@@ -103,7 +103,7 @@ namespace SupportManagementCenter.Controllers
 
         private bool TicketCorrespondenceModelExists(long id)
         {
-            return _context.TicketCorrespondenceModel.Any(e => e.CorrispondenceId == id);
+            return _context.TicketCorrespondence.Any(e => e.CorrispondenceId == id);
         }
     }
 }
