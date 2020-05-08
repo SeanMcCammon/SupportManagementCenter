@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using SupportManagementCenter.Models;
+using SupportManagementCenter.Services;
 
 namespace SupportManagementCenter.Controllers
 {
@@ -14,10 +15,13 @@ namespace SupportManagementCenter.Controllers
     public class CreateTicketApiController : ControllerBase
     {
         private readonly SupportManagementCenterDBContext _context;
+        private readonly ITicketServices _ticketServices;
 
-        public CreateTicketApiController(SupportManagementCenterDBContext context)
+        public CreateTicketApiController(SupportManagementCenterDBContext context,
+                                         ITicketServices ticketServices)
         {
             _context = context;
+            _ticketServices = ticketServices;
         }
 
         // GET: api/CreateTicketApi
@@ -38,18 +42,16 @@ namespace SupportManagementCenter.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] SupportTicketModel supportTicketModel)
         {
+            long ticketId = 0; // initiate to 0
+
             if (ModelState.IsValid)
             {
                 // Add date ticket raised before write to DB
-                supportTicketModel.DateRaised = DateTime.Now;
-
-                _context.Add(supportTicketModel);
-                await _context.SaveChangesAsync();
-                //return RedirectToAction(nameof(Index));
+                ticketId = _ticketServices.CreateTicket(supportTicketModel);
             }
 
             //return View(supportTicketModel);
-            return Ok(supportTicketModel.TicketId);
+            return Ok(ticketId);
         }
 
         // PUT: api/CreateTicketApi/5
